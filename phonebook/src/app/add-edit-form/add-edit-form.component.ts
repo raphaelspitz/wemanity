@@ -14,32 +14,65 @@ export class AddEditFormComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder, private bookService:BookService,
     private route: ActivatedRoute) { }
+
   ngOnInit() {
-    this.createAnEmptyForm();
+    if(this.bookService.editFlow === false)
+      this.createAnEmptyForm();
+    else
+      this.createAnEditableForm();
   }
 
   createAnEmptyForm(){
-      this.form = this.formBuilder.group({
-        firstname:new FormControl('',Validators.required),
-        laststname:new FormControl('',Validators.required),
-        phonenumber:new FormControl('',
-        [
-          Validators.required,
-          Validators.minLength(10)
-        ]
-      )
-      });
-    }
-  
+  //  this.bookService.users = null;
+    this.form = this.formBuilder.group({
+      firstname:new FormControl('',Validators.required),
+      laststname:new FormControl('',Validators.required),
+      phonenumber:new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(10)
+      ]
+    )
+    });
+  }
+
+  createAnEditableForm(){
+    let formFields = this.bookService.users;
+
+    this.form = this.formBuilder.group({
+      firstname:formFields["firstname"],
+      laststname:formFields["laststname"],
+      phonenumber:formFields["phonenumber"]
+    });
+
+    this.bookService.users = null;
+
+  }
 
   createOrEditUser(userData){
-    this.createUser(userData);
+
+    if(this.bookService.editFlow === false)
+      this.createUser(userData);
+    else
+      this.editUser(userData);
   }
 
   createUser(userData){
     this.bookService.addUser(userData).subscribe(data => {
       this.form.reset();
      });
+  }
+
+  editUser(userData){
+  //  this.bookService.editUser(id,{"firstname":"edit1","laststname":"edit1","phonenumber":"edit"}).subscribe(data => {});
+   let  id =   window.location.href.split('/');
+   
+    this.bookService.editUser(id[4],userData).subscribe(data => {
+      this.form.reset();
+     }); 
+
+    this.bookService.editFlow = false;
+
   }
 
 }

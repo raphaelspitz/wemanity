@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchUsers(searchData){
-    console.log(searchData);
+
   }
 
 }

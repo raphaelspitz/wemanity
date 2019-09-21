@@ -1,1 +1,12 @@
-<p>search works!</p>
+<div class="container">
+    <form #searchform="ngForm" (ngSubmit)="searchUsers(searchform.value)">
+        <input type="text"
+            ngModel
+            name="search"
+            placeholder="please type your search here"
+            required
+        >
+        <button type="submit" class="btn btn-success" [disabled]="searchform.invalid">Submit</button>
+    </form>
+</div>
+

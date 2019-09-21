@@ -12,4 +12,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchUsers(searchData){
+    console.log(searchData);
+  }
+
 }

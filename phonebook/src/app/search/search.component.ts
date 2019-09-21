@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   }
 
   searchUsers(searchData){
-    alert('searchUsers');
     this.bookService.searchUser(searchData.search);
   }
 

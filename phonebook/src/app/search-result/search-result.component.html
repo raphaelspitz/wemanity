@@ -1,1 +1,22 @@
-<p>search-result works!</p>
+<table *ngIf="users.length > 0" class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Phonenumber</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let usesrsFound of users">
+            <td>{{usesrsFound.firstname}}</td>
+            <td>{{usesrsFound.laststname}}</td>
+            <td>{{usesrsFound.phonenumber}}</td>
+            <td class="cursor-pointer" (click)="getUserIdandEditIt(usesrsFound._id)"><a>Edit</a><i class="fa fa-pencil"></i></td>
+            <td class="cursor-pointer" (click)="getUserIdandEditIt(usesrsFound._id)"><a>Delete</a><i class="fa fa-trash"></i></td>
+
+    </tr>
+    </tbody>
+  </table>
+  

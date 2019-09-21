@@ -72,7 +72,6 @@ export class AddEditFormComponent implements OnInit {
      }); 
 
     this.bookService.editFlow = false;
-
   }
 
 }

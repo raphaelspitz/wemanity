@@ -15,6 +15,9 @@ export class BookService {
 
   constructor(private httpClient:HttpClient) { }
 
+  /*   
+    fetch the database with all the users present.
+  */
   searchUser(search){
     this.searchfield = search;
     this.httpClient.get(this.BASE_URL + '/api/users/search/'+search)
@@ -24,4 +27,13 @@ export class BookService {
         console.log(err);
       });
   }
+
+  getUserById(id){
+    return  this.httpClient.get(this.BASE_URL + '/api/users/'+id);
+  }
+
+  addUser(userData){
+    return this.httpClient.post(this.BASE_URL + '/api/users', userData);
+   }
+
 }

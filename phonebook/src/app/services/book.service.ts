@@ -38,7 +38,6 @@ export class BookService {
 
    editUser(id,userData){
     return this.httpClient.put(this.BASE_URL + '/api/users/'+id, userData);
-
    }
 
 }

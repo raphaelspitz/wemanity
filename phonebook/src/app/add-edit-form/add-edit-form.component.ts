@@ -40,9 +40,14 @@ export class AddEditFormComponent implements OnInit {
     let formFields = this.bookService.users;
 
     this.form = this.formBuilder.group({
-      firstname:formFields["firstname"],
-      laststname:formFields["laststname"],
-      phonenumber:formFields["phonenumber"]
+      firstname:new FormControl(formFields["firstname"],Validators.required),
+      laststname:new FormControl(formFields["laststname"],Validators.required),
+      phonenumber:new FormControl(formFields["phonenumber"],
+      [
+        Validators.required,
+        Validators.minLength(10)
+      ]
+    )
     });
 
     this.bookService.users = null;

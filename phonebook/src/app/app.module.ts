@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -11,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
-import {NgxMaskModule} from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask';
 
 
 
@@ -31,7 +30,7 @@ import {NgxMaskModule} from 'ngx-mask'
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxMaskModule.forRoot(),
+    NgxMaskModule.forRoot()
 
   ],
   providers: [],

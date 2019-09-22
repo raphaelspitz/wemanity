@@ -8,8 +8,6 @@ const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'useredit/:id', component:UserEditComponent},
   {path:'adduser', component:AddEditFormComponent}
-
-
 ];
 
 @NgModule({

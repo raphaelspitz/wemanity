@@ -34,14 +34,11 @@ router.post('/', async function(req, res, next) {
     laststname:req.body.laststname,
     phonenumber:req.body.phonenumber
   });
-  
   let result = await user.save();
   res.json({"status":'ok'});
-
 });
 
 router.put('/:id', async function(req, res, next) {
- 
   const user = await User.findByIdAndUpdate(req.params.id, {
     firstname:req.body.firstname,
     laststname:req.body.laststname,
@@ -49,9 +46,7 @@ router.put('/:id', async function(req, res, next) {
   },
     {new:true}
   );
-
   res.json({"update":'ok'});
-
 });
 
 

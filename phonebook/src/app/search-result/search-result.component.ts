@@ -21,14 +21,9 @@ export class SearchResultComponent implements OnInit {
   getUserIdandEditIt(id){
 
     this.bookService.getUserById(id).subscribe(res => {
-      console.log(res);
-
-     // [routerLink]="['', ]"
      this.bookService.editFlow = true;
-
       this.bookService.users = res;
       this._router.navigateByUrl("/useredit/"+id);
-
     });
   }
 

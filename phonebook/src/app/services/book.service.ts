@@ -14,17 +14,13 @@ export class BookService {
   editFlow = false;
   constructor(private httpClient:HttpClient) {}
 
-   getBookList(){
-     return  this.httpClient.get(this.BASE_URL + '/api/users');
-   }
-
     getUserById(id){
-    return  this.httpClient.get(this.BASE_URL + '/api/users/'+id);
-  }
+      return  this.httpClient.get(this.BASE_URL + '/api/users/'+id);
+    }
 
   searchUser(search){
     this.searchfield = search;
-    this.httpClient.get(this.BASE_URL + '/api/users/search/'+search)
+    this.httpClient.get(this.BASE_URL + '/api/users')
       .subscribe(res => {
         return this.searchResultSubject.next(res);
       },err => {

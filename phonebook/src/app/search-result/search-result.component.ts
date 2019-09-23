@@ -19,7 +19,6 @@ export class SearchResultComponent implements OnInit {
   }
 
   getUserIdandEditIt(id){
-
     this.bookService.getUserById(id).subscribe(res => {
      this.bookService.editFlow = true;
       this.bookService.users = res;

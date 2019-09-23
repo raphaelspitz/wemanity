@@ -27,6 +27,12 @@ export class SearchResultComponent implements OnInit {
     });
   }
 
+  deleteUserByID(id,index){
+    this.bookService.deleteUser(id).subscribe(res => {
+      this.users.splice(index,1);
+     });
+  }
+
   handleSearchResult(data){
     let filteredUsers = data.filter( element =>
       element.firstname.toLowerCase().indexOf(this.bookService.searchfield.toLowerCase()) != -1  ||

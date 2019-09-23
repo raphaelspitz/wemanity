@@ -49,6 +49,13 @@ router.put('/:id', async function(req, res, next) {
   res.json({"update":'ok'});
 });
 
+router.delete('/:id', async function(req,res,next){
+  const user = await User.findByIdAndRemove(req.params.id);
+  
+  res.json({"update":'ok'});
+
+});
+
 
 
 

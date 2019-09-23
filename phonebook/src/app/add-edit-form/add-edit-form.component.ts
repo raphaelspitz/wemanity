@@ -69,8 +69,7 @@ export class AddEditFormComponent implements OnInit {
   }
 
   editUser(userData){
-  //  this.bookService.editUser(id,{"firstname":"edit1","laststname":"edit1","phonenumber":"edit"}).subscribe(data => {});
-   let  id =   window.location.href.split('/');
+   let id = window.location.href.split('/');
    
     this.bookService.editUser(id[4],userData).subscribe(data => {
       this.form.reset();
@@ -78,5 +77,7 @@ export class AddEditFormComponent implements OnInit {
 
     this.bookService.editFlow = false;
   }
+
+  
 
 }

@@ -40,4 +40,8 @@ export class BookService {
     return this.httpClient.put(this.BASE_URL + '/api/users/'+id, userData);
    }
 
+   deleteUser(id){
+    return this.httpClient.delete(this.BASE_URL + '/api/users/'+ id);
+   }
+
 }

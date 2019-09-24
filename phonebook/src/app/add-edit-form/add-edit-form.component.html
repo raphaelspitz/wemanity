@@ -8,7 +8,7 @@
                     placeholder="enter your firstname here"
                     formControlName="firstname"
                     >
-            <div *ngIf="form.get('firstname').touched && form.get('firstname').invalid" class="alert alert-danger">firstname is required</div>
+            <div *ngIf="validateForError(form,'firstname')" class="alert alert-danger">firstname is required</div>
             <label for="laststname">laststname</label>
             <input type="text"
                     name="laststname"
@@ -16,7 +16,7 @@
                     placeholder="enter your laststname here"
                     formControlName="laststname"
             >
-            <div *ngIf="form.get('laststname').touched && form.get('laststname').invalid" class="alert alert-danger">firstname is required</div>
+            <div *ngIf="validateForError(form,'laststname')" class="alert alert-danger">firstname is laststname</div>
 
             <label for="phonenumber">phonenumber</label>
             <input type="text"
@@ -26,7 +26,7 @@
             formControlName="phonenumber"
             mask="+00 00 0000009999"
             >
-            <div *ngIf="form.get('phonenumber').touched && form.get('phonenumber').invalid" class="alert alert-danger">Phone number should have minmum 10 characters</div>
+            <div *ngIf="validateForError(form,'phonenumber')" class="alert alert-danger">Phone number should have minmum 10 characters</div>
 
             <div class="m-t-2pct d-flex justify-content-end">
                 <button type=submit class="btn btn-success" [disabled]="form.invalid">ADD</button>

@@ -77,7 +77,16 @@ export class AddEditFormComponent implements OnInit {
 
     this.bookService.editFlow = false;
   }
+  validateForError(form,fieldName) {
+    console.log('----',fieldName);
+    console.log('form.get',form.get(fieldName));
+    if(form.get(fieldName).touched) {
+        if(form.get(fieldName).value !== "") {
+          return form.get(fieldName).invalid;
+        }
+       
+    }  
 
+  }
   
-
 }

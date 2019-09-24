@@ -13,8 +13,18 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+
   searchUsers(searchData){
+    this.bookService.filterActive = true;
+    console.log(this.bookService.filterActive)
+
     this.bookService.searchUser(searchData.search);
+  }
+
+  showAllUsers(){
+    this.bookService.filterActive = false;
+    console.log(this.bookService.filterActive)
+    this.bookService.searchUser("");
   }
 
 }

@@ -10,6 +10,7 @@ export class BookService {
   users = {};
   searchResultSubject = new Subject();
   searchfield:string;
+  filterActive = true;
   BASE_URL = "http://localhost:3000";
   editFlow = false;
   constructor(private httpClient:HttpClient) {}

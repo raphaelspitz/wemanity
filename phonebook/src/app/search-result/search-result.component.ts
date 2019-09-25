@@ -32,7 +32,8 @@ export class SearchResultComponent implements OnInit {
      });
   }
 
-  handleSearchResult(data){
+  filterTheArray(data){
+
     let filteredUsers = data.filter( element =>
       element.firstname.toLowerCase().indexOf(this.bookService.searchfield.toLowerCase()) != -1  ||
       element.laststname.toLowerCase().indexOf(this.bookService.searchfield.toLowerCase()) != -1  ||
@@ -40,5 +41,14 @@ export class SearchResultComponent implements OnInit {
     );
 
     this.users = filteredUsers;
+  }
+
+  handleSearchResult(data){
+    if(!this.bookService.filterActive){
+      this.users = data;
+    }
+    else{
+      this.filterTheArray(data)
+    }
   }
 }

@@ -35,7 +35,7 @@ router.post('/', async function(req, res, next) {
     phonenumber:req.body.phonenumber
   });
   let result = await user.save();
-  res.json({"status":'ok'});
+  res.json({result});
 });
 
 router.put('/:id', async function(req, res, next) {

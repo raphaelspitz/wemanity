@@ -10,8 +10,13 @@ export class SearchResultComponent implements OnInit {
 
   constructor(private bookService:BookService,private _router: Router) { }
   users = [];
-
+  showMessageForLastUserCreated:boolean;
   ngOnInit() {
+    if(this.bookService.lastUserCreated){
+      this.showMessageForLastUserCreated = true;
+      this.users.push(this.bookService.lastUserCreated);
+    }
+   
     this.bookService.searchResultSubject
       .subscribe(data => {
         this.handleSearchResult(data);
@@ -44,6 +49,8 @@ export class SearchResultComponent implements OnInit {
   }
 
   handleSearchResult(data){
+    this.showMessageForLastUserCreated = false;
+
     if(!this.bookService.filterActive){
       this.users = data;
     }

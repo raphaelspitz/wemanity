@@ -13,6 +13,7 @@ export class BookService {
   filterActive = true;
   BASE_URL = "http://localhost:3000";
   editFlow = false;
+  lastUserCreated:any;
   constructor(private httpClient:HttpClient) {}
 
     getUserById(id){

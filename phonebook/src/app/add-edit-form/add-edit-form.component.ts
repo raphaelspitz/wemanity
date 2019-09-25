@@ -13,9 +13,10 @@ export class AddEditFormComponent implements OnInit {
   form : FormGroup;
 
   constructor(private formBuilder:FormBuilder, private bookService:BookService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,private _router: Router) { }
 
   ngOnInit() {
+    this.bookService.lastUserCreated = null;
     if(this.bookService.editFlow === false)
       this.createAnEmptyForm();
     else
@@ -64,7 +65,11 @@ export class AddEditFormComponent implements OnInit {
 
   createUser(userData){
     this.bookService.addUser(userData).subscribe(data => {
+     // {result: {…}}result: {_id: "5d8b534b975bb351b8d643d6", firstname: "rrrrrrrrr", laststname: "rrrrrrrrrr", phonenumber: "54545454545454", __v: 0}__proto__: Object
+      this.bookService.lastUserCreated = data["result"];
       this.form.reset();
+      this._router.navigateByUrl("/");
+
      });
   }
 
@@ -78,8 +83,8 @@ export class AddEditFormComponent implements OnInit {
     this.bookService.editFlow = false;
   }
   validateForError(form,fieldName) {
-    console.log('----',fieldName);
-    console.log('form.get',form.get(fieldName));
+ //   console.log('----',fieldName);
+   // console.log('form.get',form.get(fieldName));
     if(form.get(fieldName).touched) {
         if(form.get(fieldName).value !== "") {
           return form.get(fieldName).invalid;
